@@ -1,0 +1,42 @@
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment configurations and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Operating system artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# ML Model
+# Keep churn_model.pkl tracked because it is small
+# Use Git LFS or object storage for models over 100 MB
+# Exclude duplicate root model
+/churn_model.pkl
