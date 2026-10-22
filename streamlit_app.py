@@ -838,6 +838,7 @@ with col_pred:
             unsafe_allow_html=True,
         )
     else:
+        
         # Active Prediction Outcome
         pred_label = result.get("prediction", "Unknown")
         churn_prob = float(result.get("churn_probability", 0.0))
@@ -850,13 +851,12 @@ with col_pred:
 
         if is_churn:
             interpretation_text = (
-                f"The Model estimated a <strong>{prob_pct}% probability of churn</strong>. "
-                "Account attributes (such as usage fluctuation, penalties, or service inquiries) place this "
-                "customer in an at-risk cluster."
+                f"The model estimated a {prob_pct}% probability of churn. "
+                "Account usage, penalties, or service inquiries may indicate elevated churn risk."
             )
         else:
             interpretation_text = (
-                f"The Model estimated a <strong>{prob_pct}% probability of churn</strong>. "
+                f"The model estimated a {prob_pct}% probability of churn. "
                 "Current tenure, spend, and satisfaction patterns indicate steady account continuity."
             )
 
@@ -874,15 +874,16 @@ with col_pred:
                     <div class="{bar_fill_class}" style="width: {max(prob_pct, 2)}%;"></div>
                 </div>
                 <div class="result-interpretation">
-                
                     {interpretation_text}
                 </div>
                 <div class="result-caption">
-                    Model estimate based on trained Machine Learning pipeline; not a calibrated risk score or guarantee of future behaviour.
+                    Estimate from the trained machine learning pipeline; not a calibrated risk score or guarantee of future behaviour.
                 </div>
             </div>
         """).strip()
+
         st.markdown(result_html, unsafe_allow_html=True)
+
 
         st.markdown('<div class="reset-btn">', unsafe_allow_html=True)
         if st.button("Run another analysis"):
